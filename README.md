@@ -7,10 +7,8 @@ A role-based access control (RBAC) management system built with React. This proj
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
 - [Components](#components)
 - [Styling](#styling)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
