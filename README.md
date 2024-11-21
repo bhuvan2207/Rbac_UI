@@ -2,14 +2,7 @@
 
 A role-based access control (RBAC) management system built with React. This project provides a UI for managing users, roles, and permissions, allowing users to be added, edited, or deleted with their associated roles and statuses.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Components](#components)
-- [Styling](#styling)
-- [License](#license)
+
 
 ## Introduction
 
