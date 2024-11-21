@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# RBAC Management - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A role-based access control (RBAC) management system built with React. This project provides a UI for managing users, roles, and permissions, allowing users to be added, edited, or deleted with their associated roles and statuses.
 
-## Available Scripts
+## Table of Contents
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Folder Structure](#folder-structure)
+- [Components](#components)
+- [Styling](#styling)
+- [Contributing](#contributing)
+- [License](#license)
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+This frontend application is part of an RBAC Management System that allows the user to manage users and their roles. The system enables functionalities like adding new users, editing their information, filtering users by role, and deleting users with a confirmation prompt.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The UI is built using **React** and includes components for displaying user lists, managing user roles, and interacting with forms for adding or editing users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Key Features:
+- Add, edit, and delete users.
+- Search and filter users by role or status.
+- Responsive and easy-to-use interface with role management features.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run the frontend part of the RBAC Management system locally, follow these steps:
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/your-username/rbac-management-frontend.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. cd rbac-management-frontend
+3. npm install
+4. npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### 5. **Usage**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```markdown
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once the app is up and running, you can:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Add a New User**:
+   - Click on the **"Add User"** button.
+   - Fill out the **Name** and **Role** fields.
+   - Click **Add** to create a new user.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Edit an Existing User**:
+   - Click on the **"Edit"** button next to a user’s name.
+   - Modify the user’s name (for now, only name editing is allowed).
+   - Click **Save** to update the user.
 
-## Learn More
+3. **Delete a User**:
+   - Click on the **"Delete"** button next to the user.
+   - A confirmation dialog will appear. If you confirm, the user will be deleted.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Search and Filter**:
+   - Use the **Search** field to filter users by name.
+   - Use the **Role** dropdown to filter users by status (Active or Inactive).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Example Workflow:
 
-### Code Splitting
+1. Add a user with the name **John Doe** and role **Admin**.
+2. Edit the user’s name to **John Smith**.
+3. Search for **John Smith** in the search bar.
+4. Delete **John Smith** after confirming the deletion.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Features
 
-### Analyzing the Bundle Size
+- **Role Management**: Allows managing different roles and assigning them to users.
+- **User List**: Displays a table of users with their ID, Name, Role, Status, and Actions.
+- **Search & Filter**: Provides search functionality for finding users by name and a dropdown for filtering by role or status.
+- **Responsive Design**: The app adjusts to different screen sizes for better usability.
+- **Confirmation on Deletion**: A confirmation dialog ensures that users are not accidentally deleted.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Components
 
-### Making a Progressive Web App
+### 1. **UserManagement.js**
+This component is the core of the RBAC Management frontend. It handles:
+- Displaying the list of users.
+- Allowing the user to add, edit, and delete users.
+- Searching and filtering the user list.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. **UserCard.js**
+Each user is displayed in a **UserCard** component, which includes:
+- User details: ID, Name, Role, Status.
+- Action buttons: Edit and Delete.
 
-### Advanced Configuration
+### 3. **AddUserForm.js**
+This component is used to add new users. It contains:
+- Input fields for the user's **Name** and **Role**.
+- Buttons for submitting or cancelling the action.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Styling
 
-### Deployment
+The application uses **Tailwind CSS** for styling, providing utility-first classes for fast and consistent design.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- All UI elements (buttons, inputs, table, etc.) use **Tailwind** classes to ensure responsive and modern design.
+- The project is styled to be responsive on both desktop and mobile devices, ensuring usability across different screen sizes.
 
-### `npm run build` fails to minify
+### Custom Styling:
+If you need to modify the styles:
+1. Open the `src/styles` directory.
+2. Edit the relevant CSS/SCSS files, or extend them using Tailwind’s utility classes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For example, you can modify the button styles by updating the classes in the components.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/your-username/rbac-management-frontend/LICENSE) file for details.
+
+
