@@ -6,12 +6,14 @@ const UserManagement = () => {
     { id: 2, name: "Ritvik", role: "Editor", status: "Inactive" },
     { id: 3, name: "Sharan", role: "Editor", status: "Inactive" },
     { id: 4, name: "Arjun", role: "Viewer", status: "Active" },
-    { id: 4, name: "Antragya", role: "Editor", status: "Inactive" },
+    { id: 5, name: "Antragya", role: "Editor", status: "Inactive" }, // Corrected duplicate ID
   ]);
   const [newUser, setNewUser] = useState({ name: "", role: "" });
   const [showForm, setShowForm] = useState(false);
   const [editUserId, setEditUserId] = useState(null); // Track the user being edited
   const [editName, setEditName] = useState(""); // Track the new name being edited
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterStatus, setFilterStatus] = useState("");
 
   const handleAddUser = () => {
     if (!newUser.name || !newUser.role) {
@@ -25,9 +27,18 @@ const UserManagement = () => {
     setShowForm(false); // Hide the form after adding the user
   };
 
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (filterStatus === "" || user.status === filterStatus)
+  );
+
   const handleDeleteUser = (userId) => {
-    const updatedUsers = users.filter((user) => user.id !== userId);
-    setUsers(updatedUsers);
+    const isConfirmed = window.confirm("Are you sure you want to delete this user?");
+    if (isConfirmed) {
+      const updatedUsers = users.filter((user) => user.id !== userId);
+      setUsers(updatedUsers);
+    }
   };
 
   const handleEditUser = (userId) => {
@@ -99,6 +110,25 @@ const UserManagement = () => {
         </div>
       )}
 
+      <div className="mb-4 flex gap-4">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="px-3 py-2 border rounded w-1/2"
+        />
+        <select
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value)}
+          className="px-3 py-2 border rounded w-1/4"
+        >
+          <option value="">All</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-300 text-left">
           <thead className="bg-gray-200">
@@ -111,7 +141,7 @@ const UserManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
+            {filteredUsers.map((user) => (
               <tr key={user.id} className="hover:bg-gray-100">
                 <td className="border border-gray-300 px-4 py-2">{user.id}</td>
                 <td className="border border-gray-300 px-4 py-2">
